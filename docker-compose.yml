@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+    backend:
+        build: ./express-app
+        container_name: express-app
+        ports:
+            - '3001:3001'
+        volumes:
+            - ./express-app:/app
+        working_dir: /app
+        command: npm run dev
+        environment:
+            - PORT=3001
+
+    frontend:
+        build: ./react-app
+        container_name: nextjs-app
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./react-app:/app
+        working_dir: /app
+        command: npm run start
+        environment:
+            - PORT=3000
+            - PUBLIC_API_URL=http://localhost:3001
