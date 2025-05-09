@@ -5,18 +5,20 @@ export interface DataInterface {
     name: string;
 }
 
-export const useData = () => {
-    const [data, setData] = useState({});
+export const useData = (url: string) => {
+    const [data, setData] = useState<DataInterface | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http:localhost:3001/api/item/1')
-            .then((data) => data.json)
-            .then((data) => setData(data))
-            .then(() => setLoading(false))
-            .catch(setError);
-    }, []);
+        const fetchData = async () => {
+            try {
+                const res = await fetch(url);
+            } catch (err) {
+                setError(err);
+            }
+        };
+    }, [url]);
 
     return { data, loading, error };
 };

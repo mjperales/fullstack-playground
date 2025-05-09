@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <RenderData
-        renderSuccess={<p></p>}
+        renderSuccess={(data) => <p>{JSON.stringify(data, null, 2)}</p>}
         errorState={<p>Oops, something went wrong</p>}
         loadingState={<p>Loading data...</p>}
       />
