@@ -8,11 +8,14 @@ type Props = {
 }
 
 const RenderData = ({loadingState, errorState, renderSuccess }: Props) => {
-    const {data, loading, error} = useData('http:localhost:3001/api/items');
-    console.log('data', data);
+    const {data, loading, error} = useData('http://localhost:3001/api/items');
+
     if(loading) return loadingState;
     if(error) return errorState;
     if(data) return renderSuccess({data});
+
+    // Fallback in case of no data, loading or error
+    return <div>Loading...</div>;
 };
 
 export default RenderData;
