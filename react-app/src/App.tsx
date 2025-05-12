@@ -1,5 +1,6 @@
 import React from 'react';
 import RenderData from './components/RenderData';
+import ParentComponent from './components/MemoizeComponent/ParentComponent';
 import './App.css';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
         errorState={<p>Oops, something went wrong</p>}
         loadingState={<p>Loading data...</p>}
       />
+      <ParentComponent />
     </div>
   );
 }
