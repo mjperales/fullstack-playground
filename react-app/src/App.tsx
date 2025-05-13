@@ -2,6 +2,7 @@ import React from 'react';
 import RenderData from './components/RenderData';
 import ParentComponent from './components/MemoizeComponent/ParentComponent';
 import './App.css';
+import RegistrationForm from './components/ValidateForm/RegistrationForm';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         loadingState={<p>Loading data...</p>}
       />
       <ParentComponent />
+      <RegistrationForm />
     </div>
   );
 }
