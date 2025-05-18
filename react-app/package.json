@@ -41,14 +41,10 @@
       "last 1 safari version"
     ]
   },
-<<<<<<< HEAD
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.3.0",
     "jest": "^27.5.1"
-  }
-}
-=======
+  },
   "proxy": "http://localhost:3001/"
 }
->>>>>>> main
