@@ -1,4 +1,4 @@
-import { useContext, createContext, JSX, useReducer, ActionDispatch} from 'react';
+import { useContext, createContext, JSX, useReducer} from 'react';
 
 // TODO: Create a GlobalContext and GlobalProvider that manages user, theme, notifications
 // const GlobalContext = ...
