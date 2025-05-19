@@ -6,6 +6,7 @@ import RegistrationForm from './components/ValidateForm/RegistrationForm';
 import { AdvanceCustomHooks } from './components/AdvanceCustomHooks/AdvanceCustomHooks';
 import { GlobalProvider } from './components/AdvanceCustomHooks/GlobalContext';
 import EventDelegation  from './components/EventDelegation/EventDelegation';
+import Form from './components/FormTask/Form';
 
 function App() {
   return (
@@ -16,12 +17,13 @@ function App() {
         errorState={<p>Oops, something went wrong</p>}
         loadingState={<p>Loading data...</p>}
       />
-      <ParentComponent />
+      {/* <ParentComponent />
       <RegistrationForm />
       <GlobalProvider>
         <AdvanceCustomHooks />
       </GlobalProvider>
-      <EventDelegation />
+      <EventDelegation /> */}
+      <Form />
     </div>
   );
 }
