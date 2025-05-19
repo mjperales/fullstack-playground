@@ -2,7 +2,9 @@ import React from 'react';
 import RenderData from './components/RenderData';
 import ParentComponent from './components/MemoizeComponent/ParentComponent';
 import './App.css';
-import RegistrationForm from './components/ValidateForm/RegistrationForm';
+// import RegistrationForm from './components/ValidateForm/RegistrationForm';
+import { AdvanceCustomHooks } from './components/AdvanceCustomHooks/AdvanceCustomHooks';
+import { GlobalProvider } from './components/AdvanceCustomHooks/GlobalContext';
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
         loadingState={<p>Loading data...</p>}
       />
       <ParentComponent />
-      <RegistrationForm />
+      {/* <RegistrationForm /> */}
+      <GlobalProvider>
+        <AdvanceCustomHooks />
+      </GlobalProvider>
     </div>
   );
 }

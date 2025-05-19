@@ -1,12 +1,9 @@
 import React, {useState} from 'react';
 
 const RegistrationForm = () => {
-    const initialFormData = {
-        name: '',
-        email: '',
-        password: '',
-    };
-    const [formData, setformData] = useState<{name: string; email: string; password: string;}>(initialFormData);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const initialErrors = {
         name: false,
         email: false,
@@ -15,55 +12,53 @@ const RegistrationForm = () => {
     const [errors, setErrors] = useState<{name: boolean; email: boolean; password: boolean;}>(initialErrors);
     const [success, setSuccess] = useState(false);
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name } = e.target;
-        setformData((prevData) => ({
-            ...prevData,
-            [name]: e.target.value,
-        }));
-    };
-
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       console.log(e.currentTarget.name);
 
-      if (formData.name === '') {
+      if (name === '') {
         setErrors((prevErrors) => ({
           ...prevErrors,
           name: true,
         }));
       }
 
-      if (formData.email === '' || !formData.email.includes('@')) {
+      if (email === '' || !email.includes('@')) {
         setErrors((prevErrors) => ({
           ...prevErrors,
           email: true,
         }));
       }
-        if (formData.password.length <= 8) {
+        if (password.length <= 8) {
           setErrors((prevErrors) => ({
             ...prevErrors,
             password: true,
           }));
         }
-        if (formData.name && formData.email && formData.password.length >= 8) {
+        if (name && email && password.length >= 8) {
           setSuccess(true);
           setErrors(initialErrors);
-          setformData(initialFormData);
+          setName('');
+          setEmail('');
+          setPassword('');
         }
 
     };
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{
+        border: '1px solid red',
+        width: '600px',
+        margin: '0 auto'}}
+        >
         <div>
           <label htmlFor="name">*Name</label>
           <input
             id="name"
             type="text"
             name="name"
-            value={formData.name || ''}
-            onChange={handleOnChange}
+            value={name || ''}
+            onChange={(e) => setName(e.target.value)}
           />
           {errors.name && (<p>Name is required</p>)}
         </div>
@@ -74,8 +69,8 @@ const RegistrationForm = () => {
             id="email"
             name="email"
             type="email"
-            value={formData.email || ''}
-            onChange={handleOnChange}
+            value={email || ''}
+            onChange={(e) => setEmail(e.target.value)}
           />
           {errors.email && (<p>Invalid email</p>)}
         </div>
@@ -86,8 +81,8 @@ const RegistrationForm = () => {
             id="password"
             name="password"
             type="password"
-            value={formData.password || ''}
-            onChange={handleOnChange}
+            value={password || ''}
+            onChange={(e) => setPassword(e.target.value)}
           />
             {errors.password && (<p>Password must be at least 8 characters long.</p>)}
         </div>

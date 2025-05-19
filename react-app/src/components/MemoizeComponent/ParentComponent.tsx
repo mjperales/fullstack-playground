@@ -3,7 +3,7 @@ import MemoChild from './MemoComponent';
 
 function ParentComponent() {
     const [count, setCount] = useState(0);
-    const [text, setText] = useState('');
+    const [, setText] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
