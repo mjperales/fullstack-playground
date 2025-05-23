@@ -19,7 +19,7 @@ export const DataFilter = ({ data }: DataFilterProps) => {
     return (
         <div>
             {array.map(item => (<p>{item}</p>))}
-            <p>Total count: {array.length - 1}</p>
+            <p>Total count: {array.length}</p>
         </div>
     );
 };
