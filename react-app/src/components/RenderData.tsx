@@ -1,11 +1,11 @@
 import React from 'react';
 import { useData } from '../hooks/useData';
 
-type Props = {
+type Props<T = any> = {
     url: string;
     loadingState: React.ReactElement;
     errorState: React.ReactElement;
-    renderSuccess: (props: { data: {id: string; name: string} }) => React.ReactElement;
+    renderSuccess: (props: T) => React.ReactElement;
 }
 
 const RenderData = ({url, loadingState, errorState, renderSuccess }: Props) => {
