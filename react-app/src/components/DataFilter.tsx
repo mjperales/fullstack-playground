@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 
 
 interface DataFilterProps {
@@ -18,7 +18,7 @@ export const DataFilter = ({ data }: DataFilterProps) => {
 
     return (
         <div>
-            {array.map(item => (<p>{item}</p>))}
+            {array.map(item => (<p>Unique: {item}</p>))}
             <p>Total count: {array.length}</p>
         </div>
     );
