@@ -75,8 +75,8 @@ export const WeatherForm = () => {
     return (
         <div className='weather'>
             <form className='weather-form' onSubmit={handleSubmit}>
-                <label id="search">Search</label>
-                <input onChange={(e => setCity(e.target.value))} type="text" id="search" value={city} name="search" />
+                <label htmlFor="city" id="search">Search</label>
+                <input onChange={(e => setCity(e.target.value))} type="text" id="city" value={city} name="search" />
                 <button type="submit">Search</button>
             </form>
 
