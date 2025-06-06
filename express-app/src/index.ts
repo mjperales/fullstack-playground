@@ -4,10 +4,13 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { json } from 'body-parser';
 
+// REST API
 import itemsRoutes from './routes/item.routes';
 import taskRoutes from './routes/task.routes';
-import { typeDefs } from './schema';
-import { resolvers } from './resolvers';
+
+// GraphQl
+import { typeDefs } from './graphql/schema';
+import { resolvers } from './graphql/resolvers';
 
 const app = express();
 const port = 3001;
@@ -29,10 +32,6 @@ async function startApolloServer() {
 startApolloServer(); // Start Apollo Server separately
 
 // REST Root Route
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello from Express + TypeScript!');
-});
-
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello from Express + TypeScript!');
 });

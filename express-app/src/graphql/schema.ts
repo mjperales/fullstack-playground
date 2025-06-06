@@ -19,6 +19,7 @@ export const typeDefs = gql`
     users: [User!]!
     posts: [Post!]!
     user(id: ID!): User
+    post(id: ID!): Post
   }
 
   type Mutation {

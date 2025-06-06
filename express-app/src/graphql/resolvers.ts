@@ -38,6 +38,8 @@ export const resolvers = {
     posts: () => posts,
     user: (_: any, { id }: { id: string }) =>
       users.find((user) => user.id === id),
+    post: (_: any, { id }: { id: string }) =>
+      posts.find((post) => post.id === id),
   },
 
   Mutation: {
