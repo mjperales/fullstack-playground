@@ -14,11 +14,14 @@ interface IKeys {
 
 let cache: IKeys = {};
 
-export default function useSWR(key: string, fetcher: () => Promise<any>): UseSWRResponse {
+export default function useSWR(
+  key: string,
+  fetcher: () => Promise<any>
+): UseSWRResponse {
   // TODO: Implement the hook.
   const [data, setData] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(!cache[key]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let mounted = true;
@@ -35,7 +38,6 @@ export default function useSWR(key: string, fetcher: () => Promise<any>): UseSWR
 
     fetcher()
       .then((res) => {
-        console.log('res', res);
         if (mounted) {
           cache[key] = res;
           setData(res);
