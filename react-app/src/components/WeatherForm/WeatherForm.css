@@ -1,0 +1,12 @@
+.weather {
+    padding: 1em;
+    margin: 0 auto;
+    width: 50%;
+}
+
+form.weather-form {
+    align-content: flex-start;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 5px;
+}
