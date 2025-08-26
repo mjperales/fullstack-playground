@@ -7,6 +7,7 @@ import { json } from 'body-parser';
 // REST API
 import itemsRoutes from './routes/item.routes';
 import taskRoutes from './routes/task.routes';
+import fruitRoutes from './routes/fruit.routes';
 
 // GraphQl
 import { typeDefs } from './graphql/schema';
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api/items', itemsRoutes);
 app.use('/api/tasks', taskRoutes);
+app.use('/api/fruits', fruitRoutes);
 
 // GraphQL Setup
 async function startApolloServer() {

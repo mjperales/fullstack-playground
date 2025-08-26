@@ -4,6 +4,7 @@ import Form from './components/Form';
 import { DataFilter } from './components/DataFilter';
 import { useData } from './hooks/useData';
 import { WeatherForm } from './components/WeatherForm/WeatherForm';
+import AutoComplete from './components/AutoComplete/AutoComplete';
 import './App.css';
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         errorState={<p>Oops, something went wrong</p>}
         loadingState={<p>Loading data...</p>}
       /> */}
-    <WeatherForm />
+      {/* <WeatherForm /> */}
+      <AutoComplete />
     </div>
   );
 }
