@@ -8,6 +8,7 @@ import EvenDelegationPage from './pages/EventDelegationPage';
 import MemoPage from './pages/MemoPage';
 import RegisterFormPage from './pages/RegisterFormPage';
 import reportWebVitals from './reportWebVitals';
+import AutoCompletePage from './pages/AutoCompletePage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -21,6 +22,7 @@ root.render(
         <Route path="/event-delegation" element={<EvenDelegationPage />} />
         <Route path="/memoize" element={<MemoPage />} />
         <Route path="/register" element={<RegisterFormPage />} />
+        <Route path="/auto-complete" element={<AutoCompletePage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

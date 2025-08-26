@@ -12,11 +12,17 @@ export default function AutoComplete() {
   const fetcher = async () => {
     return fetch('http://localhost:3001/api/fruits').then((res) => res.json());
   };
-  const fruits: { data: IFruit[] } = useSWR('/api/fruits', fetcher);
-  const [data, setData] = useState(fruits.data || []);
+  const {
+    data,
+    error,
+    isLoading,
+  }: { data: IFruit[]; error: string | null; isLoading: boolean } = useSWR(
+    '/api/fruits',
+    fetcher
+  );
+  const [fruits, setFruits] = useState(data || []);
   const [fruit, setFruit] = useState('');
 
-  console.log(fruits);
   return (
     <div>
       <form>
@@ -32,11 +38,8 @@ export default function AutoComplete() {
         />
         <button type="submit">Search</button>
       </form>
-      <ul>
-        {data.map((fruit) => (
-          <li>{fruit.name}</li>
-        ))}
-      </ul>
+      {isLoading && <p>Loading...</p>}
+      <ul>{!isLoading && data.map((fruit) => <li>{fruit.name}</li>)}</ul>
     </div>
   );
 }
