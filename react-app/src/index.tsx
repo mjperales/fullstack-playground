@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import './index.css';
 import App from './App';
+import ArticlesPage from './pages/ArticlesPage';
+import EvenDelegationPage from './pages/EventDelegationPage';
+import MemoPage from './pages/MemoPage';
+import RegisterFormPage from './pages/RegisterFormPage';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -13,6 +17,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/articles" element={<ArticlesPage />} />
+        <Route path="/event-delegation" element={<EvenDelegationPage />} />
+        <Route path="/memoize" element={<MemoPage />} />
+        <Route path="/register" element={<RegisterFormPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

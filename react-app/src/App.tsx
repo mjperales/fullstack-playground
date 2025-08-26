@@ -1,23 +1,24 @@
-import React from 'react';
-import RenderData from './components/RenderData';
-import Form from './components/Form';
-import { DataFilter } from './components/DataFilter';
-import { useData } from './hooks/useData';
-import { WeatherForm } from './components/WeatherForm/WeatherForm';
-import AutoComplete from './components/AutoComplete/AutoComplete';
 import './App.css';
+import RenderData from './components/RenderData';
+// import { AdvanceCustomHooks } from './components/AdvanceCustomHooks/AdvanceCustomHooks';
+// import { GlobalProvider } from './components/AdvanceCustomHooks/GlobalContext';
+import Form from './components/FormTask/Form';
 
 function App() {
   return (
     <div className="App">
-      {/* <RenderData
-        url="https://jsonplaceholder.typicode.com/posts"
-        renderSuccess={(data: { data: { userId: number; id: number; title: number; }[]}) => <DataFilter data={data} />}
+      <RenderData
+        url="http://localhost:3001/api/items"
+        renderSuccess={(data) => <p>{JSON.stringify(data, null, 2)}</p>}
         errorState={<p>Oops, something went wrong</p>}
         loadingState={<p>Loading data...</p>}
-      /> */}
-      {/* <WeatherForm /> */}
-      <AutoComplete />
+      />
+      {/*
+      <GlobalProvider>
+        <AdvanceCustomHooks />
+      </GlobalProvider>
+     */}
+      <Form />
     </div>
   );
 }
