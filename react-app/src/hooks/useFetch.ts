@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
 
-interface UseFetchProps {
-  url: string;
-}
-
 export function useFetch(url: string) {
   const [data, setData] = useState([]);
   const [error, setError] = useState<boolean | string>(false);
