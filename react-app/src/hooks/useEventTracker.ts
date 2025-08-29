@@ -30,6 +30,10 @@ export const useEventTracker = (): IEventTracker => {
       return [];
     }
 
+    if (topN && topN > memoSort.length) {
+      return memoSort;
+    }
+
     return topN ? memoSort.slice(0, topN) : memoSort;
   };
 
