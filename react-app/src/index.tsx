@@ -9,6 +9,7 @@ import MemoPage from './pages/MemoPage';
 import RegisterFormPage from './pages/RegisterFormPage';
 import reportWebVitals from './reportWebVitals';
 import AutoCompletePage from './pages/AutoCompletePage';
+import PostsPage from './pages/PostsPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,6 +24,7 @@ root.render(
         <Route path="/memoize" element={<MemoPage />} />
         <Route path="/register" element={<RegisterFormPage />} />
         <Route path="/auto-complete" element={<AutoCompletePage />} />
+        <Route path="/posts" element={<PostsPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
