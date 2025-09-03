@@ -8,26 +8,31 @@ function ArticlesPage() {
   const articles: Array<Article> = useMemo(() => {
     return [
       {
+        id: 1,
         title: 'Hey Title',
         upvotes: 12,
         date: '2021-11-11',
       },
       {
+        id: 9393,
         title: 'Hola Title',
         upvotes: 2,
         date: '2018-07-03',
       },
       {
+        id: 2,
         title: 'Boom Title',
         upvotes: 1,
         date: '2020-05-15',
       },
       {
+        id: 5,
         title: 'Poo Title',
         upvotes: 6,
         date: '2020-10-03',
       },
       {
+        id: 9,
         title: 'Article Title',
         upvotes: 9,
         date: '2025-11-03',

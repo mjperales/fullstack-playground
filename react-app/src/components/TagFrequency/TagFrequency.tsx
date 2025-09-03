@@ -11,7 +11,7 @@ interface IPostProps {
 }
 
 export default function TagFrequency({ posts }: IPostProps) {
-  let allTags = useMemo(() => posts.flatMap((p) => p.tags), [posts]);
+  const allTags = useMemo(() => posts.flatMap((p) => p.tags), [posts]);
   const tagFrequency = useMemo(() => {
     const map = new Map();
     allTags.forEach((tag) => {
