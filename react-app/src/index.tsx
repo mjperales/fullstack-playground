@@ -10,6 +10,7 @@ import RegisterFormPage from './pages/RegisterFormPage';
 import reportWebVitals from './reportWebVitals';
 import AutoCompletePage from './pages/AutoCompletePage';
 import PostsPage from './pages/PostsPage';
+import ProductsPage from './pages/ProductsPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -25,6 +26,7 @@ root.render(
         <Route path="/register" element={<RegisterFormPage />} />
         <Route path="/auto-complete" element={<AutoCompletePage />} />
         <Route path="/posts" element={<PostsPage />} />
+        <Route path="/products" element={<ProductsPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
