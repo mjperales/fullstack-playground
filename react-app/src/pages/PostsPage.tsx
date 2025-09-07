@@ -9,7 +9,11 @@ export default function PostsPage() {
       title: 'Standing Desk Setup',
       tags: ['furniture', 'tech', 'lifestyle'],
     },
-    { id: 4, title: 'Cast Iron Cooking', tags: ['kitchen', 'reviews'] },
+    {
+      id: 4,
+      title: 'Cast Iron Cooking',
+      tags: ['kitchen', 'kitchen', 'reviews'],
+    },
   ];
   return <TagFrequency posts={posts} />;
 }

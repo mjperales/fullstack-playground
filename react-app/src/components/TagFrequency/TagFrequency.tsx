@@ -13,7 +13,11 @@ interface IPostProps {
 
 export default function TagFrequency({ posts }: IPostProps) {
   // First, combine all tags into an array
-  const allTags = useMemo(() => posts.flatMap((p) => p.tags), [posts]);
+  // Make sure tags inside of each post are not duplicated
+  const allTags = useMemo(
+    () => posts.flatMap((p) => Array.from(new Set(p.tags))),
+    [posts]
+  );
   // Second, we remove duplicates and find frequency
   const tagFrequency = useMemo(() => {
     const map = new Map();
