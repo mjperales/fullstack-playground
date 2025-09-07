@@ -16,32 +16,40 @@ export interface IProductListProps {
 const ProductList = ({ products }: IProductListProps) => {
   const [recommended, setRecommended] = useState(new Set());
   const [currentFilter, setCurrentFilter] = useState('');
-  const [currentProducts, setCurrentProducts] = useState(products);
+  const [sortDirection, setSortDirection] = useState<'asc' | 'desc' | ''>('');
+
   const uniqueCategories: string[] = useMemo(() => {
-    const categories = products.map((product) => product.category);
-    return Array.from(new Set(categories));
+    return Array.from(new Set(products.map((product) => product.category)));
   }, [products]);
 
-  const handleFilterClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setCurrentFilter(e.currentTarget.name);
+  const visibleProducts = useMemo(() => {
+    // make copy
+    let result = [...products];
 
-    if (currentFilter !== e.currentTarget.name) {
-      const filtered = products.filter(
-        (product) => product.category === e.currentTarget.name
-      );
-      setCurrentProducts(filtered);
-    } else {
-      setCurrentFilter('');
-      setCurrentProducts(products);
+    // filter
+    if (currentFilter) {
+      result = result.filter((p) => p.category === currentFilter);
     }
+
+    // sort
+    if (sortDirection) {
+      result.sort((a, b) =>
+        sortDirection === 'desc' ? b.rating - a.rating : a.rating - b.rating
+      );
+    }
+    return result;
+  }, [currentFilter, sortDirection, products]);
+
+  const handleFilterClick = (category: string) => {
+    setCurrentFilter((prev) => (prev === category ? '' : category));
   };
 
-  const handleSortByRatingDesc = () => {
-    const sortByRating = [
-      ...currentProducts.sort((a, b) => b.rating - a.rating),
-    ];
-    console.log(sortByRating);
-    setCurrentProducts(sortByRating);
+  const handleSortToggle = () => {
+    setSortDirection((prev) => {
+      if (prev === 'desc') return 'asc';
+      if (prev === 'asc') return '';
+      return 'desc';
+    });
   };
 
   const handleOnToggle = (id: number) => {
@@ -66,7 +74,7 @@ const ProductList = ({ products }: IProductListProps) => {
                 currentFilter === category ? 'active' : ''
               }`}
               name={category}
-              onClick={(e) => handleFilterClick(e)}
+              onClick={() => handleFilterClick(category)}
             >
               {category}
             </button>
@@ -76,13 +84,13 @@ const ProductList = ({ products }: IProductListProps) => {
 
       <button
         style={{ marginBottom: '1rem' }}
-        className="card-button"
-        onClick={handleSortByRatingDesc}
+        className={`card-button ${sortDirection ? 'active' : ''}`}
+        onClick={handleSortToggle}
       >
-        Sort by rating
+        Toggle sort by rating ({sortDirection || 'none'})
       </button>
 
-      {currentProducts.map((product) => (
+      {visibleProducts.map((product) => (
         <ProductCard
           key={product.id}
           product={product}
