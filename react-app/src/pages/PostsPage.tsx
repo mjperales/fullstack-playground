@@ -2,17 +2,14 @@ import TagFrequency from '../components/TagFrequency/TagFrequency';
 
 export default function PostsPage() {
   const posts = [
+    { id: 1, title: 'Best Headphones', tags: ['audio', 'reviews', 'tech'] },
+    { id: 2, title: '10 Kitchen Hacks', tags: ['kitchen', 'lifestyle'] },
     {
-      id: 1,
-      title: 'React Performance Tips',
-      tags: ['react', 'performance'],
+      id: 3,
+      title: 'Standing Desk Setup',
+      tags: ['furniture', 'tech', 'lifestyle'],
     },
-    {
-      id: 2,
-      title: 'Understanding Maps in JS',
-      tags: ['javascript', 'map', 'performance'],
-    },
-    { id: 3, title: 'TypeScript Basics', tags: ['typescript', 'javascript'] },
+    { id: 4, title: 'Cast Iron Cooking', tags: ['kitchen', 'reviews'] },
   ];
   return <TagFrequency posts={posts} />;
 }

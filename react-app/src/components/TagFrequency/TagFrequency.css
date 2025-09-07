@@ -1,0 +1,26 @@
+.tag-frequency-wrapper {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.tags-wrapper {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.button-styled {
+    border: 0;
+    padding: 1rem;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+
+.button-styled:hover {
+    background-color: cadetblue;
+}
+
+.button-styled.active {
+    background-color: darkturquoise;
+}

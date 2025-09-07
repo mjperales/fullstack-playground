@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import './TagFrequency.css';
 
 interface IPost {
   id: number;
@@ -11,50 +12,59 @@ interface IPostProps {
 }
 
 export default function TagFrequency({ posts }: IPostProps) {
+  // First, combine all tags into an array
   const allTags = useMemo(() => posts.flatMap((p) => p.tags), [posts]);
+  // Second, we remove duplicates and find frequency
   const tagFrequency = useMemo(() => {
     const map = new Map();
     allTags.forEach((tag) => {
       map.set(tag, (map.get(tag) ?? 0) + 1);
     });
-    return Array.from(map);
-  }, [allTags]);
-  const [currentTag, setCurrentTag] = useState<null | string>(null);
-  const [allPosts, setAllPosts] = useState(posts);
 
-  const handleFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (currentTag === e.currentTarget.name) {
-      setAllPosts(posts);
-      return;
+    return Array.from(map).map((item) => ({
+      tag: item[0],
+      frequency: item[1],
+    }));
+  }, [allTags]);
+
+  const [currentTag, setCurrentTag] = useState('');
+  const currentPosts = useMemo(() => {
+    let copy = [...posts];
+
+    // if currentTag, then filter by that tag
+    if (currentTag) {
+      copy = copy.filter((p) => p.tags.includes(currentTag));
     }
 
-    const filteredPosts = posts.filter((post) =>
-      post.tags.includes(e.currentTarget.name)
-    );
+    return copy;
+  }, [posts, currentTag]);
 
-    setAllPosts(filteredPosts);
-    setCurrentTag(e.currentTarget.name);
+  const handleCurrentTag = (tag: string) => {
+    setCurrentTag((prev) => (prev === tag ? '' : tag));
   };
 
   return (
-    <section className="tag-fequency-wrapper">
+    <section className="tag-frequency-wrapper">
       <header>
         <h1>Tags</h1>
-        <ul>
+        <ul className="tags-wrapper">
           {tagFrequency.map((item) => (
-            <li key={item[0]}>
+            <li key={item.tag}>
               <button
+                className={`button-styled ${
+                  currentTag === item.tag ? 'active' : ''
+                }`}
                 type="button"
-                name={item[0]}
-                onClick={(e) => handleFilter(e)}
-              >{`${item[0]} (${item[1]})`}</button>
+                name={item.tag}
+                onClick={() => handleCurrentTag(item.tag)}
+              >{`${item.tag} (${item.frequency})`}</button>
             </li>
           ))}
         </ul>
       </header>
       <div className="posts-wrapper">
         <ul>
-          {allPosts.map((post) => (
+          {currentPosts.map((post) => (
             <li key={post.id}>{post.title}</li>
           ))}
         </ul>
