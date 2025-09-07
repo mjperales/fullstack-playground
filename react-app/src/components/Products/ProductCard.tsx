@@ -13,17 +13,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
   isRecommended,
   onToggle,
 }) => {
+  const { name, category, rating, description } = product;
   return (
     <div className="card" role="group" aria-label={`${product.name} card`}>
-      {/* TODO: Display product name, category, and rating */}
-      {/* TODO: Add button that toggles recommended state */}
       <div>
-        <h2 className="card-title">{product.name}</h2>
-        <p className="card-category">{product.category}</p>
-        <p className="card-rating">{product.rating}</p>
+        <h2 className="card-title">{name}</h2>
+        <p className="card-category">{category}</p>
+        {description && <p>{description}</p>}
+        <p className="card-rating">{rating}</p>
       </div>
       <button
-        className="card-button"
+        className={`card-button ${isRecommended ? 'active' : ''}`}
         name={product.id.toString()}
         onClick={() => onToggle(product.id)}
         type="button"

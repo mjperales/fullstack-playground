@@ -62,3 +62,10 @@
     background: #4caf50;
     color: white;
 }
+
+.tags {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+}
