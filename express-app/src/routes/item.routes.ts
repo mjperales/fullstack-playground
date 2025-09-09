@@ -7,8 +7,8 @@ import {
 
 const router = Router();
 
-router.post('/item', createItem);
-router.get('/item/:id', getItem);
+router.post('/', createItem);
+router.get('/:id', getItem);
 router.get('/', getAllItems);
 
 export default router;

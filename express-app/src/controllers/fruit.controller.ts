@@ -1,4 +1,6 @@
-import { Request, Response } from 'express';
+import { asyncHandler } from '../utils/asyncHandler';
+import { ApiError } from '../utils/ApiError';
+
 const fruits = [
   { id: 1, name: 'Apple', emoji: '🍎' },
   { id: 2, name: 'Banana', emoji: '🍌' },
@@ -22,17 +24,18 @@ const fruits = [
   { id: 20, name: 'Coconut', emoji: '🥥' },
 ];
 
-export const getFruit = (req: Request, res: Response) => {
+export const getFruit = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const fruit = fruits.find((fruit) => fruit.id === parseInt(id, 10));
   if (!fruit) {
-    res.status(404).json({ message: 'Fruit not found' });
-    return;
+    throw new ApiError(404, 'Fruit not found');
   }
-
   res.status(200).json(fruit);
-};
+});
 
-export const getAllFruits = (req: Request, res: Response) => {
+export const getAllFruits = asyncHandler(async (req, res) => {
+  if (!fruits || fruits.length === 0) {
+    throw new ApiError(404, 'No fruits found');
+  }
   res.status(200).json(fruits);
-};
+});

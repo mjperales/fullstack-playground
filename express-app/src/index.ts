@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router } from 'express';
 import cors from 'cors';
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
@@ -12,16 +12,24 @@ import fruitRoutes from './routes/fruit.routes';
 // GraphQl
 import { typeDefs } from './graphql/schema';
 import { resolvers } from './graphql/resolvers';
+import { errorHandler } from './errroHandler';
 
 const app = express();
 const port = 3001;
+const apiRouter = Router();
+
+// Routes
+apiRouter.use('/items', itemsRoutes);
+apiRouter.use('/tasks', taskRoutes);
+apiRouter.use('/fruits', fruitRoutes);
 
 // REST Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/api/items', itemsRoutes);
-app.use('/api/tasks', taskRoutes);
-app.use('/api/fruits', fruitRoutes);
+app.use('/api', apiRouter);
+
+// must be last
+app.use(errorHandler);
 
 // GraphQL Setup
 async function startApolloServer() {
