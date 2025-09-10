@@ -6,7 +6,7 @@ export interface DataInterface {
 }
 
 export const useData = (url: string) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,7 +35,7 @@ export const useData = (url: string) => {
 
     // clean data
     return () => {
-      setData(null);
+      setData([]);
       setLoading(true);
       setError(null);
     };

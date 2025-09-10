@@ -8,6 +8,7 @@ import { json } from 'body-parser';
 import itemsRoutes from './routes/item.routes';
 import taskRoutes from './routes/task.routes';
 import fruitRoutes from './routes/fruit.routes';
+import postRoutes from './routes/post.routes';
 
 // GraphQl
 import { typeDefs } from './graphql/schema';
@@ -22,6 +23,7 @@ const apiRouter = Router();
 apiRouter.use('/items', itemsRoutes);
 apiRouter.use('/tasks', taskRoutes);
 apiRouter.use('/fruits', fruitRoutes);
+apiRouter.use('/posts', postRoutes);
 
 // REST Middleware
 app.use(cors());

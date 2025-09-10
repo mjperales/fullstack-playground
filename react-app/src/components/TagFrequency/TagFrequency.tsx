@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import './TagFrequency.css';
 
-interface IPost {
+export interface IPost {
   id: number;
   title: string;
   tags: string[];
