@@ -9,7 +9,11 @@ const posts = [
     title: 'Understanding Maps in JS',
     tags: ['javascript', 'map', 'performance'],
   },
-  { id: 3, title: 'TypeScript Basics', tags: ['typescript', 'javascript'] },
+  {
+    id: 3,
+    title: 'TypeScript Basics',
+    tags: ['typescript', 'javascript', 'javascript'],
+  },
 ];
 
 describe('TagFrequency Component', () => {
