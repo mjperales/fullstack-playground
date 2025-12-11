@@ -11,6 +11,7 @@ import reportWebVitals from './reportWebVitals';
 import AutoCompletePage from './pages/AutoCompletePage';
 import PostsPage from './pages/PostsPage';
 import ProductsPage from './pages/ProductsPage';
+import RichTextPage from './pages/RichTextPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -27,6 +28,7 @@ root.render(
         <Route path="/auto-complete" element={<AutoCompletePage />} />
         <Route path="/posts" element={<PostsPage />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/rich-text" element={<RichTextPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
