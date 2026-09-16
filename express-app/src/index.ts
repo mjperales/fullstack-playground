@@ -13,7 +13,7 @@ import postRoutes from './routes/post.routes';
 // GraphQl
 import { typeDefs } from './graphql/schema';
 import { resolvers } from './graphql/resolvers';
-import { errorHandler } from './errroHandler';
+import { errorHandler } from './errorHandler';
 
 const app = express();
 const port = 3001;
