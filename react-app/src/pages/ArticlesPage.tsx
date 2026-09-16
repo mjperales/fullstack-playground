@@ -39,10 +39,12 @@ function ArticlesPage() {
       },
     ];
   }, []);
+  // sortedUpVotes - sort by upvotes
   const sortedUpVotes = useMemo(
     () => [...articles].sort((a, b) => a.upvotes - b.upvotes),
     [articles]
   );
+  // sortedByRecent - sort by most recent
   const sortedByRecent = useMemo(
     () => [...articles].sort((a, b) => b.date.localeCompare(a.date)),
     [articles]

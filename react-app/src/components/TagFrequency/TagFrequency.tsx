@@ -25,9 +25,9 @@ export default function TagFrequency({ posts }: IPostProps) {
       map.set(tag, (map.get(tag) ?? 0) + 1);
     });
 
-    return Array.from(map).map((item) => ({
-      tag: item[0],
-      frequency: item[1],
+    return Array.from(map, (i) => ({
+      tag: i[0],
+      frequency: i[1],
     }));
   }, [allTags]);
 
